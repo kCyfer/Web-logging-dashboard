@@ -14,13 +14,13 @@ $username_err = $password_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Wpisz proszę nazwę użytkownika.";
     } else{
         $username = trim($_POST["username"]);
     }
 
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Wpisz proszę hasło użytkownika.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -48,14 +48,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                             header("location: welcome.php");
                         } else{
-                            $password_err = "The password you entered was not valid.";
+                            $password_err = "Wprowadzone hasło jest nie prawidłowe.";
                         }
                     }
                 } else{
-                    $username_err = "No account found with that username.";
+                    $username_err = "Nie znaleziono użytkownika o takiej nazwie.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "UPS! Coś poszło nie tak, spróbuj później!";
             }
 
             mysqli_stmt_close($stmt);

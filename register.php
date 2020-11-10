@@ -7,7 +7,7 @@ $username_err = $password_err = $confirm_password_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
+        $username_err = "Wpisz proszę nazwę użytkownika.";
     } else{
         $sql = "SELECT id FROM users WHERE username = ?";
 
@@ -20,12 +20,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
+                    $username_err = "Użytkownik o takiej nazwie już istnieje.";
                 } else{
                     $username = trim($_POST["username"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "UPS! Coś poszło nie tak, spróbuj później!";
             }
 
             mysqli_stmt_close($stmt);
@@ -33,19 +33,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";
+        $password_err = "Wpisz proszę hasło.";
     } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Hasło musi mieć minimum 6 znaków.";
     } else{
         $password = trim($_POST["password"]);
     }
 
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";
+        $confirm_password_err = "Proszę potwierdź hasło.";
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+            $confirm_password_err = "Hasła nie pasują do siebie.";
         }
     }
 
@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_execute($stmt)){
                 header("location: login.php");
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "UPS! Coś poszło nie tak, spróbuj później!";
             }
 
             mysqli_stmt_close($stmt);
@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Zarejestruj się.</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; }

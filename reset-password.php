@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("location: login.php");
                 exit();
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "UPS! Coś poszło nie tak, spróbuj później!";
             }
 
             mysqli_stmt_close($stmt);
